@@ -15,7 +15,7 @@ console.log(`Загальна вартість всіх товарів : ${sum}`
 const sumRoundOfPrices = Math.floor(orange) + Math.floor(tomato) + Math.floor(milk);
 console.log(`Загальна вартість всіх товарів без копійок: ${sumRoundOfPrices}`);
 
-const sumRound = Math.ceil(sumRoundOfPrices/100)*100;
+const sumRound = Math.round(sumRoundOfPrices/100)*100;
 console.log(`Сума товарів округлена до сотень: ${sumRound}`);
 
 const x = Boolean(sumRoundOfPrices % 2==0);
