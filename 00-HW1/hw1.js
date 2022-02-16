@@ -15,22 +15,20 @@ console.log(`Загальна вартість всіх товарів : ${sum}`
 const sumRoundOfPrices = Math.floor(orange) + Math.floor(tomato) + Math.floor(milk);
 console.log(`Загальна вартість всіх товарів без копійок: ${sumRoundOfPrices}`);
 
-const sumRound = 100 - sumRoundOfPrices % 100 + sumRoundOfPrices;
+const sumRound = Math.ceil(sumRoundOfPrices/100)*100;
 console.log(`Сума товарів округлена до сотень: ${sumRound}`);
 
-const x = Boolean(sumRoundOfPrices % 2);
-
-if (sumRoundOfPrices % 2 == 0) {
-    console.log(`Сума всіх товарів ${sumRoundOfPrices} парне число`);
+const x = Boolean(sumRoundOfPrices % 2==0);
+if (x) {
+    console.log(`${x}, cума всіх товарів ${sumRoundOfPrices} - парне число`);
 } else {
-    console.log(`Сума всіх товарів ${sumRoundOfPrices} непарне число`);
+    console.log(`${x}, cума всіх товарів ${sumRoundOfPrices} -непарне число`);
 }
 
 const cash = 500;
-const change = cash - sum;
-console.log(`Клієнт платить 500 грн.Сума решти: ${change}`);
+console.log(`Клієнт платить 500 грн.Сума решти: ${cash - sum}`);
 
-const avgSum = (sum / 3).toFixed(2);
+const avgSum = (sum / 3).toFixed(1);
 console.log(`Середнє значення цін: ${avgSum}`);
 
 const percentage = Math.floor(Math.random() * (30 - 3) + 3);
