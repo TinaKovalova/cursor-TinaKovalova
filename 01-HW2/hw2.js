@@ -7,9 +7,12 @@ do {
     start = +prompt('Від якого числа ми будемо складати? Введіть ціле число');
 } while (start % 1 != 0)
 
+let finishIsBiggerThanStart;
 do {
     finish = +prompt('До якого числа ми будемо складати? Введіть ціле число');
-} while (finish % 1 != 0)
+    finishIsBiggerThanStart = finish > start;
+    if (!finishIsBiggerThanStart) alert('Введіть ціле число більше ніж начальне значення відліку!')
+} while (finish % 1 != 0 || !finishIsBiggerThanStart)
 
 const skip = confirm('Чи потрібно пропускати парні числа?');
 
