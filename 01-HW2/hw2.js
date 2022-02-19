@@ -4,12 +4,12 @@ let finish;
 let counter = 0;
 
 do {
-    start = +prompt('Від якого числа ми будемо складати?', '0');
-} while (Number.isNaN(start))
+    start = +prompt('Від якого числа ми будемо складати? Введіть ціле число');
+} while (start % 1 != 0)
 
 do {
-    finish = +prompt('До якого числа ми будемо складати?', '0');
-} while (Number.isNaN(finish))
+    finish = +prompt('До якого числа ми будемо складати? Введіть ціле число');
+} while (finish % 1 != 0)
 
 const skip = confirm('Чи потрібно пропускати парні числа?');
 
