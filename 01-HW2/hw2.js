@@ -4,15 +4,18 @@ let finish;
 let counter = 0;
 
 do {
-    start = +prompt('Від якого числа ми будемо складати? Введіть ціле число');
-} while (start % 1 != 0)
+    start = +prompt('Від якого числа ми будемо складати? Введіть ціле число', '0');
+    if (!Number.isInteger(start)) alert("Некоректно введені дані");
+} while (!Number.isInteger(start))
 
-let finishIsBiggerThanStart;
 do {
     finish = +prompt('До якого числа ми будемо складати? Введіть ціле число');
-    finishIsBiggerThanStart = finish > start;
-    if (!finishIsBiggerThanStart) alert('Введіть ціле число більше ніж начальне значення відліку!')
-} while (finish % 1 != 0 || !finishIsBiggerThanStart)
+    if (!Number.isInteger(finish)) {
+        alert("Некоректно введені дані");
+    } else if (finish < start) {
+        alert('Введіть ціле число більше ніж начальне значення відліку!');
+    }
+} while (!Number.isInteger(finish) || finish < start)
 
 const skip = confirm('Чи потрібно пропускати парні числа?');
 
