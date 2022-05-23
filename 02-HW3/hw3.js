@@ -35,15 +35,10 @@ const countLetter=(letter, word)=> {
 const convertCurrency=(sum, currency = 25)=>{
     let result;
     const data = sum.toString().toUpperCase();
-    const getCash =  (text) => {
-        const index = data.indexOf(text);
-        const cash = Number(data.slice(0, index));
-        return cash;
-    }
     if (data.includes('$')) {
-        result = getCash('$') * currency;
+        result = parseInt(sum)* currency;
     } else if (data.includes('UAH')) {
-        result = getCash('UAH') / currency;
+        result = parseInt(sum) / currency;
     } else {
         result = 'Помилка: Конвертуються тільки $ або UAH, інші валюти не конвертуються';
     }
