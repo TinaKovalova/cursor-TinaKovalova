@@ -20,7 +20,7 @@ const getPowNumber=(number, power)=>{
     return result;
 }
 
-const nameFormatter=(name) => name[0].toUpperCase() + name.slice(1);
+const nameFormatter=(name) => name[0].toUpperCase() + name.slice(1).toLowerCase();
 const salaryWithoutTaxes=(salary, taxes = 19.5)=>salary - salary * 19.5 / 100;
 const getRandomNumber=(start, finish)=>Math.floor(Math.random() * (finish - start));
 
