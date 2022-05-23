@@ -1,33 +1,30 @@
 'use strict';
-
-function getMaxDigit(number) {
+const getMaxDigit=(number)=>{
     const digitsArr = number.toString().split('').map(item => Number(item));
     const maxDigit = Math.max(...digitsArr);
     return maxDigit;
 }
 
-function getPowNumber(number, power) {
-    if (power == 0) {
-        return 1;
-    } else if (power < 0) {
-        return 1 / getPowNumber(number, -1 * power);
+const getPowNumber=(number, power)=>{
+    let result=1;
+    if(power<0){
+        for(let i=power;i<0;i++){
+            result*=number;
+        }
+        result=1/result;
+    }else if (power>0){
+        for(let i=0;i<power;i++){
+            result*=number;
+        }
     }
-    return (power == 1) ? number : number * getPowNumber(number, power - 1);
+    return result;
 }
 
-function nameFormatter(name) {
-    return name[0].toUpperCase() + name.toLowerCase().slice(1);
-}
+const nameFormatter=(name) => name[0].toUpperCase() + name.slice(1);
+const salaryWithoutTaxes=(salary, taxes = 19.5)=>salary - salary * 19.5 / 100;
+const getRandomNumber=(start, finish)=>Math.floor(Math.random() * (finish - start));
 
-function salaryWithoutTaxes(salary, taxes = 19.5) {
-    return salary - salary * 19.5 / 100
-}
-
-function getRandomNumber(start, finish) {
-    return Math.floor(Math.random() * (finish - start));
-}
-
-function countLetter(letter, word) {
+const countLetter=(letter, word)=> {
     let counter = 0;
     for (let i = 0; i < word.length; i++) {
         if (word[i].toLowerCase() === letter.toLowerCase()) counter++;
@@ -35,12 +32,12 @@ function countLetter(letter, word) {
     return counter;
 }
 
-function convertCurrency(sum, currency = 25) {
+const convertCurrency=(sum, currency = 25)=>{
     let result;
     const data = sum.toString().toUpperCase();
-    const getCash = function (text) {
+    const getCash =  (text) => {
         const index = data.indexOf(text);
-        const cash = +data.slice(0, index);
+        const cash = Number(data.slice(0, index));
         return cash;
     }
     if (data.includes('$')) {
@@ -53,25 +50,21 @@ function convertCurrency(sum, currency = 25) {
     return result;
 }
 
-function getRandomPassword(length = 8) {
+const getRandomPassword=(length = 8)=>{
     let newPassword = '';
     for (let i = 0; i < length; i++) {
         newPassword += Math.floor(Math.random() * 10)
     }
     return newPassword;
 }
+const deleteLetters=(letter, word)=> word.split(letter).join('');
 
-function deleteLetters(letter, word) {
-    return word.split(letter).join('');
-}
-
-function isPalyndrom(word) {
-    const baseWord = deleteLetters(' ', word).toLowerCase();
-    const reverseWord = baseWord.split('').reverse().join('').toLowerCase();
+const isPalyndrom=(word)=>{
+    const baseWord = word.split(' ').join('').toLowerCase();
+    const reverseWord = [...baseWord].reverse().join('').toLowerCase();
     return baseWord === reverseWord;
 }
-
-function deleteDuplicateLetter(text) {
+const deleteDuplicateLetter=(text)=>{
     let str = text.toLowerCase();
     for (let i = 0; i < str.length; i++) {
         if (i != str.lastIndexOf(str[i])) {
