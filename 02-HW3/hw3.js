@@ -21,8 +21,8 @@ const getPowNumber=(number, power)=>{
 }
 
 const nameFormatter=(name) => name[0].toUpperCase() + name.slice(1).toLowerCase();
-const salaryWithoutTaxes=(salary, taxes = 19.5)=>salary - salary * 19.5 / 100;
-const getRandomNumber=(start, finish)=>Math.floor(Math.random() * (finish - start));
+const salaryWithoutTaxes=(salary, taxes = 19.5)=>salary - salary * taxes / 100;
+const getRandomNumber=(start, finish)=>Math.floor(Math.random() * (finish - start)+start);
 
 const countLetter=(letter, word)=> {
     let counter = 0;
@@ -34,10 +34,11 @@ const countLetter=(letter, word)=> {
 
 const convertCurrency=(sum, currency = 25)=>{
     let result;
-    const data = sum.toString().toUpperCase();
-    if (data.includes('$')) {
+    const data = sum.toUpperCase();
+    const cash=parseInt(sum)
+    if (data.includes('$') && !Number.isNaN(cash)) {
         result = parseInt(sum)* currency;
-    } else if (data.includes('UAH')) {
+    } else if (data.includes('UAH') && !Number.isNaN(cash)) {
         result = parseInt(sum) / currency;
     } else {
         result = 'Помилка: Конвертуються тільки $ або UAH, інші валюти не конвертуються';
