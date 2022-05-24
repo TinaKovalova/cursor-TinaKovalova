@@ -35,11 +35,11 @@ const countLetter=(letter, word)=> {
 const convertCurrency=(sum, currency = 25)=>{
     let result;
     const data = sum.toUpperCase();
-    const cash=parseInt(sum)
+    const cash=parseInt(sum);
     if (data.includes('$') && !Number.isNaN(cash)) {
-        result = parseInt(sum)* currency;
+        result = cash * currency;
     } else if (data.includes('UAH') && !Number.isNaN(cash)) {
-        result = parseInt(sum) / currency;
+        result = cash / currency;
     } else {
         result = 'Помилка: Конвертуються тільки $ або UAH, інші валюти не конвертуються';
     }
