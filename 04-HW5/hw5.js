@@ -115,6 +115,6 @@ console.log(`divideByThree('Live')=>`, divideByThree('Live'));
 console.log(`divideByThree('Dir')=>`, divideByThree('Dir'));
 
 console.log(`generateCombinations('man')=>`, generateCombinations('man'));
-console.log(`generateCombinations('man')=>`, generateCombinations('Netherlands'));
+console.log(`generateCombinations('Netherlands')=>`, generateCombinations('Netherlands'));
 
 
