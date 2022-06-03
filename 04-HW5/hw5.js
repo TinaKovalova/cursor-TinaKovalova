@@ -1,10 +1,13 @@
 'use strict';
 const getRandomArray = (length, min, max) => {
     const randomArray = [];
-    for (let i = 0; i < length; i++) {
-        randomArray.push(Math.floor(Math.random() * (max - min) + min));
+    if (min > max) {
+        alert('Невірно вказаний діапазон ( min більше за max )');
+    } else {
+        for (let i = 0; i < length; i++) {
+            randomArray.push(Math.floor(Math.random() * (max - min) + min));
+        }
     }
-    ;
     return randomArray;
 };
 
@@ -33,26 +36,28 @@ const getMedian = (...numbers) => {
     return Number.isInteger(middle) ? (integerNumbers[middle - 1] + integerNumbers[middle]) / 2 : integerNumbers[Math.floor(middle)];
 };
 
-const filterEvenNumbers = (...numbers) => numbers.filter(number => number % 2 != 0);
+const filterEvenNumbers = (...numbers) => numbers.filter(number => number % 2 !== 0);
 
 const countPositiveNumbers = (...numbers) => numbers.filter(number => number > 0).length;
 
-const getDividedByFive = (...numbers) => numbers.filter(number => number % 5 == 0);
+const getDividedByFive = (...numbers) => numbers.filter(number => number % 5 == 0 && number);
 
 const replaceBadWords = (string, ...badWords) => {
     const badWordsArray = ['shit', 'fuck'];
     if (badWords.length) {
-        badWordsArray.push(...badWords.filter(word => !badWordsArray.includes(word)));
+        badWordsArray.push(...badWords.map(item => item.toLowerCase()).filter(word => !badWordsArray.includes(word)));
     }
-    const res = string.split(' ').map(word => {
+    const result = string.split(' ').map(word => {
+        const wordTLC = word.toLowerCase();
         badWordsArray.forEach(badWord => {
-            if (word.includes(badWord)) {
-                word = word.replace(badWord, new Array(badWord.length).fill('*').join(''));
+            if (wordTLC.includes(badWord)) {
+                word = wordTLC.replaceAll(badWord, new Array(badWord.length).fill('*').join(''));
             }
         });
         return word;
     }).join(' ');
-    return res;
+    return result;
+
 };
 
 const divideByThree = (word) => {
@@ -87,6 +92,7 @@ const generateCombinations = (word) => {
 };
 
 console.log('getRandomArray(6, 20, 60)=> ', getRandomArray(6, 20, 60));
+//console.log('getRandomArray(6, 80, 60)=> ', getRandomArray(6, 80, 60));
 console.log('getModa(2, 56, 62, 2, 2)=> ', getModa(2, 56, 62, 2, 2));
 console.log('getModa(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2)=> ',
     getModa(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2));
@@ -102,11 +108,13 @@ console.log('getMedian(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2)=>',
 
 console.log('filterEvenNumbers(1, 2, 3, 4, 5, 6)=> ', filterEvenNumbers(1, 2, 3, 4, 5, 6));
 console.log('countPositiveNumbers(1, -2, 3, -4, -5, 6)=>', countPositiveNumbers(1, -2, 3, -4, -5, 6));
+
+console.log('getDividedByFive(0, 2, 55, 0, 10)=>', getDividedByFive(0, 2, 55, 0, 10));
 console.log('getDividedByFive(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2)=>',
     getDividedByFive(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2));
 
-console.log(`replaceBadWords('Are you fucking kidding?','shock' )=>`,
-    replaceBadWords('Are you fucking kidding?', 'shock'));
+console.log(`replaceBadWords('Are you fucking kidding?', 'shock', 'Fuck')=>`,
+    replaceBadWords('Are you fucking kidding?', 'shock', 'Fuck'));
 console.log('replaceBadWords(`It\'s bullshit!`=>', replaceBadWords(`It's bullshit!`));
 
 console.log(`divideByThree('Commander')=> `, divideByThree('Commander'));
@@ -115,6 +123,6 @@ console.log(`divideByThree('Live')=>`, divideByThree('Live'));
 console.log(`divideByThree('Dir')=>`, divideByThree('Dir'));
 
 console.log(`generateCombinations('man')=>`, generateCombinations('man'));
-console.log(`generateCombinations('Netherlands')=>`, generateCombinations('Netherlands'));
+//console.log(`generateCombinations('Netherlands')=>`, generateCombinations('Netherlands'));
 
 
