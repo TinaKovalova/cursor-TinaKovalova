@@ -90,3 +90,5 @@ document.writeln(`<div><b>Функція №10:</b><p>isPalyndrom('madam')=>${is
 document.writeln(`<p>isPalyndrom('Я несу гусеня')=>${isPalyndrom('Я несу гусеня')}</p>`);
 document.writeln(`<p>isPalyndrom('кокос')=>${isPalyndrom('кокос')}</p>`);
 document.writeln(`<div><b>Функція №11:</b><p>deleteDuplicateLetter('Бісквіт був дуже ніжним')=>${deleteDuplicateLetter('Бісквіт був дуже ніжним')}</p></div>`);
+
+export {nameFormatter};
