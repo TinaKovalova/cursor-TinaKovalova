@@ -1,6 +1,7 @@
 'use strict'
 import {nameFormatter} from "../02-HW3/hw3.js";
 import {getAverage} from "../04-HW5/hw5.js";
+console.clear();
 
 const students = [{
     name: "Tanya",
@@ -57,7 +58,7 @@ const calculateWordLetters = (word) => {
     return result;
 };
 
-console.clear();
+
 console.log('getSubjects(students[0])=>', getSubjects(students[0]));
 console.log('getAverageMark(students[0])=>', getAverageMark(students[0]));
 console.log('getStudentInfo(students[0])=>', getStudentInfo(students[0]));
