@@ -1,5 +1,6 @@
 'use strict'
 import {nameFormatter} from "../02-HW3/hw3.js";
+import {getAverage} from "../04-HW5/hw5.js";
 
 const students = [{
     name: "Tanya",
@@ -35,7 +36,7 @@ const getAverageMark = (student) => {
     return Number(getAverage(...allMarks).toFixed(2));
 };
 
-const getStudentsInfo = (student) => ({
+const getStudentInfo = (student) => ({
     course: student.course,
     name: student.name,
     averageMark: getAverageMark(student)
@@ -45,10 +46,9 @@ const getStudentsNames = (students) => students.map(student => student.name).sor
 
 const getBestStudent = (students) => {
     const maxAverageMark = Math.max(...students.map(student => getAverageMark(student)));
-    const theBestStudent = students.map(student => ({name: student.name, averageMark: getAverageMark(student)}))
+    return students.map(student => ({name: student.name, averageMark: getAverageMark(student)}))
         .filter(item => item.averageMark === maxAverageMark)
         .map(i => i.name).join();
-    return theBestStudent;
 };
 
 const calculateWordLetters = (word) => {
@@ -58,10 +58,10 @@ const calculateWordLetters = (word) => {
 };
 
 console.clear();
-console.log(getSubjects(students[0]));
-console.log(getAverageMark(students[0]));
-console.log(getStudentsInfo(students[0]));
-console.log(getStudentsNames(students));
-console.log(getBestStudent(students));
-console.log(calculateWordLetters('test'));
-console.log(calculateWordLetters('SOlo'));
+console.log('getSubjects(students[0])=>', getSubjects(students[0]));
+console.log('getAverageMark(students[0])=>', getAverageMark(students[0]));
+console.log('getStudentInfo(students[0])=>', getStudentInfo(students[0]));
+console.log('getStudentsNames(students)=>', getStudentsNames(students));
+console.log('getBestStudent(students)=>', getBestStudent(students));
+console.log(`calculateWordLetters('test')`, calculateWordLetters('test'));
+console.log(`calculateWordLetters('SOlo')`, calculateWordLetters('SOlo'));

@@ -70,25 +70,24 @@ const deleteDuplicateLetter=(text)=>{
     }
     return str;
 }
-
-document.writeln(`<div><b>Функція №1:</b><p>getMaxDigit(1236) => ${getMaxDigit(1236)}</p></div>`);
-document.writeln(`<div><b>Функція №2:</b><p>getPowNumber(2, 4)=>${getPowNumber(2, 4)}</p></div>`);
-document.writeln(`<p>getPowNumber(2, -4)=> ${getPowNumber(2, -4)}<p>`);
-document.writeln(`<p>getPowNumber(2,0)=> ${getPowNumber(2, 0)}<p>`);
-document.writeln(`<div><b>Функція №3:</b><p>nameFormatter('влад')=>${nameFormatter('влад')}</p></div>`);
-document.writeln(`<p>nameFormatter('вЛАД')=> ${nameFormatter('вЛАД')}<p>`);
-document.writeln(`<div><b>Функція №4:</b><p>salaryWithoutTaxes(1000)=>${salaryWithoutTaxes(1000)}</p></div>`);
-document.writeln(`<div><b>Функція №5:</b><p>getRandomNumber(1, 10)=>${getRandomNumber(1, 10)}</p></div>`);
-document.writeln(`<div><b>Функція №6:</b><p>countLetter('a', 'Americaaaaa')=>${countLetter('a', 'Americaaaaa')}</p></div>`);
-document.writeln(`<div><b>Функція №7:</b><p>convertCurrency('100$')=>${convertCurrency('100$')}UAH</p></div>`);
-document.writeln(`<p>convertCurrency('2500UAH')=> ${convertCurrency('2500UAH')}$<p>`);
-document.writeln(`<p>convertCurrency('100EUR')=> ${convertCurrency('100EUR')}<p>`);
-document.writeln(`<div><b>Функція №8:</b><p>getRandomPassword(4)=>${getRandomPassword(4)}</p></div>`);
-document.writeln(`<p>getRandomPassword()=> ${getRandomPassword()}<p>`);
-document.writeln(`<div><b>Функція №9:</b><p>deleteLetters('a', 'blablabla')=>${deleteLetters('a', 'blablabla')}</p></div>`);
-document.writeln(`<div><b>Функція №10:</b><p>isPalyndrom('madam')=>${isPalyndrom('madam')}</p></div>`);
-document.writeln(`<p>isPalyndrom('Я несу гусеня')=>${isPalyndrom('Я несу гусеня')}</p>`);
-document.writeln(`<p>isPalyndrom('кокос')=>${isPalyndrom('кокос')}</p>`);
-document.writeln(`<div><b>Функція №11:</b><p>deleteDuplicateLetter('Бісквіт був дуже ніжним')=>${deleteDuplicateLetter('Бісквіт був дуже ніжним')}</p></div>`);
+console.log(`Функція №1: getMaxDigit(1236) => ${getMaxDigit(1236)}`);
+console.log(`Функція №2: getPowNumber(2, 4)=>${getPowNumber(2, 4)}`);
+console.log(`getPowNumber(2, -4)=> ${getPowNumber(2, -4)}`);
+console.log(`getPowNumber(2,0)=> ${getPowNumber(2, 0)}`);
+console.log(`Функція №3: nameFormatter('влад')=>${nameFormatter('влад')}`);
+console.log(`nameFormatter('вЛАД')=> ${nameFormatter('вЛАД')}`);
+console.log(`Функція №4: salaryWithoutTaxes(1000)=>${salaryWithoutTaxes(1000)}`);
+console.log(`Функція №5: getRandomNumber(1, 10)=>${getRandomNumber(1, 10)}`);
+console.log(`Функція №6: countLetter('a', 'Americaaaaa')=>${countLetter('a', 'Americaaaaa')}`);
+console.log(`Функція №7:convertCurrency('100$')=>${convertCurrency('100$')}UAH`);
+console.log(`convertCurrency('2500UAH')=> ${convertCurrency('2500UAH')}$`);
+console.log(`convertCurrency('100EUR')=> ${convertCurrency('100EUR')}`);
+console.log(`Функція №8: getRandomPassword(4)=>${getRandomPassword(4)}`);
+console.log(`getRandomPassword()=> ${getRandomPassword()}`);
+console.log(`Функція №9: deleteLetters('a', 'blablabla')=>${deleteLetters('a', 'blablabla')}`);
+console.log(`Функція №10: isPalyndrom('madam')=>${isPalyndrom('madam')}`);
+console.log(`isPalyndrom('Я несу гусеня')=>${isPalyndrom('Я несу гусеня')}`);
+console.log(`isPalyndrom('кокос')=>${isPalyndrom('кокос')}`);
+console.log(`Функція №11: deleteDuplicateLetter('Бісквіт був дуже ніжним')=>${deleteDuplicateLetter('Бісквіт був дуже ніжним')}`);
 
 export {nameFormatter};

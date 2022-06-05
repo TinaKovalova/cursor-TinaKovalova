@@ -125,4 +125,4 @@ console.log(`divideByThree('Dir')=>`, divideByThree('Dir'));
 console.log(`generateCombinations('man')=>`, generateCombinations('man'));
 //console.log(`generateCombinations('Netherlands')=>`, generateCombinations('Netherlands'));
 
-
+export {getAverage};
