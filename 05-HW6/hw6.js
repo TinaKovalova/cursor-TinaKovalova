@@ -1,6 +1,7 @@
 'use strict'
 import {nameFormatter} from "../02-HW3/hw3.js";
 import {getAverage} from "../04-HW5/hw5.js";
+
 console.clear();
 
 const students = [{
@@ -54,7 +55,7 @@ const getBestStudent = (students) => {
 
 const calculateWordLetters = (word) => {
     let result = {};
-    word.toLowerCase().split('').forEach(letter => result[letter] === undefined ? result[letter] = 1 : result[letter]++);
+    word.toLowerCase().split('').forEach(letter => letter in result ? result[letter]++ : result[letter] = 1);
     return result;
 };
 
