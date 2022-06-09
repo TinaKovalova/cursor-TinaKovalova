@@ -80,11 +80,14 @@ const generateCombinations = (word) => {
     if (arr.length <= 1) return [word];
     for (let i = 0; i < arr.length; i++) {
         if (arr.length === 2) {
-            res.push([arr[i], arr[(i + 1) % 2]].join(''));
+            const combination = [arr[i], arr[(i + 1) % 2]].join('');
+            if (!res.includes(combination)) res.push(combination);
         } else {
             const firstLetter = arr.splice(0, 1);
             const combinations = generateCombinations(arr.join(''));
-            combinations.forEach(item => res.push(item + firstLetter));
+            combinations.forEach(item => {
+                if (!res.includes(item + firstLetter)) res.push(item + firstLetter)
+            });
             arr = [...arr, ...firstLetter];
         }
     }
@@ -123,6 +126,10 @@ console.log(`divideByThree('Live')=>`, divideByThree('Live'));
 console.log(`divideByThree('Dir')=>`, divideByThree('Dir'));
 
 console.log(`generateCombinations('man')=>`, generateCombinations('man'));
+console.log(`generateCombinations('ol')=>`, generateCombinations('ol'));
+console.log(`generateCombinations('ff')=>`, generateCombinations('ff'));
+console.log(`generateCombinations('gfff')=>`, generateCombinations('gfff'));
+console.log(`generateCombinations('gff')=>`, generateCombinations('gff'));
 //console.log(`generateCombinations('Netherlands')=>`, generateCombinations('Netherlands'));
 
 export {getAverage};
