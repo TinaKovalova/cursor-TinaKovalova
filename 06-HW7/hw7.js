@@ -28,4 +28,4 @@ function getMySalary() {
 console.log('getMyTaxes.call(ukraine, 3000) => ', getMyTaxes.call(ukraine, 3000));
 console.log('getMiddleTaxes.call(ukraine) => ', getMiddleTaxes.call(ukraine));
 console.log('getTotalTaxes.call(ukraine) => ', getTotalTaxes.call(ukraine));
-console.log(getMySalary.call(ukraine));
+getMySalary.call(ukraine);
