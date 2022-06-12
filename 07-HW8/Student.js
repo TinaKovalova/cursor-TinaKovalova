@@ -22,7 +22,7 @@ class Student {
     }
 
     getAverageMark() {
-        return this._marks.reduce((sum, item) => sum + item, 0) / this._marks.length;
+        return Number((this._marks.reduce((sum, item) => sum + item, 0) / this._marks.length).toFixed(1));
     }
 
     dismiss() {

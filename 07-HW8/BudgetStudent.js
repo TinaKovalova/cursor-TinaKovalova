@@ -8,10 +8,10 @@ class BudgetStudent extends Student {
     }
 
     getScholarship() {
-        setInterval(function () {
+        setInterval(() => {
             if (this._isStudent && this.getAverageMark() >= 4) {
                 console.log(`Ви отримали ${this._scholarship}грн. стипендії`);
             }
-        }.bind(this), 30000);
+        }, 30000);
     }
 }
