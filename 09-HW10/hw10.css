@@ -1,0 +1,41 @@
+body {
+    margin: 0;
+    padding: 0;
+    max-height: 100vh;
+    max-width: 100vw;
+    background: url('img/background.jpg') no-repeat;
+    background-size: cover;
+    font-family: Arial, Helvetica, serif;
+    min-height: min-content;
+    user-select: none;
+
+}
+
+.container {
+    position: relative;
+    max-width: min-content;
+    display: flex;
+    align-items: stretch;
+    margin: 20% auto;
+    padding: 5px;
+}
+
+.key-sound {
+    width: 105px;
+    height: 100px;
+    border: 5px solid black;
+    border-radius: 5px;
+    margin: 10px;
+    line-height: 70px;
+    font-weight: 700;
+    font-size: 28px;
+    color: whitesmoke;
+    background-color: rgba(0, 0, 0, 0.5);
+    text-align: center;
+
+}
+.key-sound-selected{
+    border-color: yellow;
+    transform: scale(1.1);
+    box-shadow: 0px 0px 2px 1px yellow;
+}
