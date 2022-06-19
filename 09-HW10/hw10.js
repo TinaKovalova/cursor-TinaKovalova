@@ -16,6 +16,7 @@ const sounds = {
 let currentSoundBlock = null;
 
 function playSound(event) {
+    if (event.repeat) return;
     const key = event.type == 'keydown' && event.code in sounds ? event.code : event.target.id || event.target.parentElement.id;
     if (key) {
         currentSoundBlock?.classList.toggle('key-sound-selected');
