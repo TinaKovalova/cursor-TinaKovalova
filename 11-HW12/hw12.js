@@ -3,14 +3,17 @@ const filmInfoForm = document.querySelector('#form');
 const getCharactersInfoBtn = document.querySelector('.getInfo');
 const getCharacterBtn = document.querySelector('.character');
 const getPlanetsBtn = document.querySelector('.planet');
-const infoPlace = document.querySelector('.main-info-place');
-const wokee = document.querySelector('.wookiee');
+const infoPlace = document.querySelector('.info-place-container');
+const nextBtn = document.querySelector('.next');
+const prevBtn = document.querySelector('.previous');
+
 const BASE_URL = 'https://swapi.dev/api/';
 const gender = {
     male: 'images/male-sign.svg',
     female: 'images/female-sign.svg',
     //'n/a':'images/robot.svg',
 }
+
 const images = {};
 
 
@@ -40,6 +43,7 @@ async function getFilmInfoByNumber(filmNumber = 0) {
 async function getCharactersByEpisodeId(episodeId = 5) {
     const request = await fetch(`${BASE_URL}films/`);
     const {results} = await request.json();
+    console.log(results)
     const film = results.find(film => film.episode_id == episodeId);
     const allCharacters = [];
     for (const link of film.characters) {
@@ -48,66 +52,98 @@ async function getCharactersByEpisodeId(episodeId = 5) {
         //console.log({name, birth_year, gender})
         allCharacters.push({name, birth_year, gender});
     }
-    //console.log(allCharacters)
+    console.log(allCharacters)
     //повне ім'я персонажа, дата народження, стать
     return allCharacters;
 }
 
-async function getAllPlanets() {
-    const request = await fetch(`${BASE_URL}planets/`);
-    const {results} = await request.json();
+async function getAllPlanets(page=null) {
+    let url = page? `${BASE_URL}planets/${page}` : `${BASE_URL}planets/`;
+    console.log(url)
+    const request = await fetch(url);
+    const {results, next, previous} = await request.json();
+    console.log({previous, next})
+
+    const query= {
+        next: next?.split('/').slice(-1),
+        previous: previous?.split('/').slice(-1)
+    };
+
+    query.next ? nextBtn.setAttribute('data-page', query.next) :  nextBtn.removeAttribute('data-page');;
+    query.previous ? prevBtn.setAttribute('data-page', query.previous):  prevBtn.removeAttribute('data-page');;
+
     console.log(results)
     return results;
 }
 
-function createCard(obj) {
+function createCharacterCard(character) {
     const card = document.createElement('div');
     const img = document.createElement('img');
     img.classList.add('photo')
-
-    img.src = images[obj.name];
+    img.src = images[character.name];
     card.append(img);
     card.classList.add('card');
     const cardText = document.createElement('div');
     cardText.classList.add('cardText');
     card.append(cardText)
-    const htmlCardText=`<h3>${obj.name}</h3><p>${obj.birth_year}</p>`;
+    const htmlCardText = `<h3>${character.name}</h3><p>${character.birth_year}</p>`;
     cardText.insertAdjacentHTML('afterbegin', htmlCardText);
 
-    if ( obj.gender in gender) {
+    if (character.gender in gender) {
         const imgGender = document.createElement('img');
         imgGender.classList.add('imgGender')
         card.append(imgGender);
-        imgGender.src = gender[obj.gender];
+        imgGender.src = gender[character.gender];
     }
 
     return card;
 
 }
 
+function createPlanetCard(planet) {
+    const {name, climate, diameter, population} = planet;
+
+    const planetCard = document.createElement('div');
+    planetCard.classList.add('card', 'planet-card');
+    const planetDescription = `<div><h3>${name}</h3></div><div ><p>climate: ${climate}</p><p>diameter: ${diameter}</p><p>population: ${population}</p></div>`;
+    planetCard.insertAdjacentHTML('afterbegin', planetDescription);
+    return planetCard;
+}
+
 function showCards(event) {
     infoPlace.innerHTML = ''
     const target = event.target;
-    let data;
+    console.log(target.name)
     switch (target.name) {
+        case 'next-btn':
+        case 'previous-btn':
+        case 'planets-btn': {
+            console.log(target)
+
+            getAllPlanets(target.dataset.page)
+                .then(planets => planets.map(planet => createPlanetCard(planet)))
+                .then(cards => cards.forEach(item => infoPlace.append(item)));
+            //
+            // getAllPlanets()
+            //     .then(planets => planets.map(planet => createPlanetCard(planet)))
+            //     .then(cards => cards.forEach(item => infoPlace.append(item)));
+            break;
+        }
         case 'characters-btn': {
-            data = getCharactersByEpisodeId();
+            getCharactersByEpisodeId()
+                .then(characters => characters.map(character => createCharacterCard(character)))
+                .then(cards => cards.forEach(item => infoPlace.append(item)));
             break;
         }
         case 'character-btn': {
             getCharacterById()
-                .then(character => createCard(character))
+                .then(character => createCharacterCard(character))
                 .then(card => infoPlace.append(card))
             break;
         }
-        case 'planets-btn': {
-            data = getAllPlanets();
-            break;
-        }
+
     }
-    data
-        .then(result => result.map(item => createCard(item)))
-        .then(cards => cards.forEach(item => infoPlace.append(item)));
+
 }
 
 function showFilmInfoByNumber(event) {
@@ -124,5 +160,7 @@ filmInfoForm.addEventListener('submit', (event) => showFilmInfoByNumber(event));
 getCharactersInfoBtn.addEventListener('click', showCards);
 getCharacterBtn.addEventListener('click', showCards);
 getPlanetsBtn.addEventListener('click', showCards);
-wokee.addEventListener('click', getImagesForAllCharacters)
+nextBtn.addEventListener('click', showCards)
+prevBtn.addEventListener('click', showCards)
+
 document.addEventListener("DOMContentLoaded", getImagesForAllCharacters)
