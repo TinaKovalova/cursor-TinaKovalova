@@ -1,8 +1,8 @@
 'use strict';
 const body = document.querySelector('body');
+const random = () => Math.floor(Math.random() * 256);
 
 function getRandomColor() {
-    const random = () => Math.floor(Math.random() * 256);
     return `rgb(${random()}, ${random()}, ${random()})`;
 }
 
