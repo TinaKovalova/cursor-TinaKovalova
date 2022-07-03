@@ -5,28 +5,28 @@ export {FetchModule} ;
 const gender = {
     male: 'images/male-sign.svg',
     female: 'images/female-sign.svg'
-}
+};
 const pagination={
     next:'',
     previous:''
-}
+};
 
 export function createCharacterCard(character) {
     const card = document.createElement('div');
     const img = document.createElement('img');
-    img.classList.add('photo')
+    img.classList.add('photo');
     img.src = FetchModule.IMAGES[character.name];
     card.append(img);
     card.classList.add('card');
     const cardTextBlock = document.createElement('div');
     cardTextBlock.classList.add('cardText');
-    card.append(cardTextBlock)
+    card.append(cardTextBlock);
     const cardText = `<h2>${character.name}</h2><p>${character.birth_year}</p>`;
     cardTextBlock.insertAdjacentHTML('afterbegin', cardText);
 
     if (character.gender in gender) {
         const imgGender = document.createElement('img');
-        imgGender.classList.add('imgGender')
+        imgGender.classList.add('imgGender');
         card.append(imgGender);
         imgGender.src = gender[character.gender];
     }
@@ -54,7 +54,7 @@ export function createFilmCard(film) {
 }
 
 export function showCards(event, renderPlace) {
-    renderPlace.innerHTML = ''
+    renderPlace.innerHTML = '';
     switch (event.target.name) {
         case 'next-btn':
         case 'previous-btn':
@@ -73,12 +73,6 @@ export function showCards(event, renderPlace) {
                 .then(cards => cards.forEach(item => renderPlace.append(item)));
             break;
         }
-        case 'character-btn': {
-            FetchModule.getCharacterById()
-                .then(character => createCharacterCard(character))
-                .then(card => renderPlace.append(card))
-            break;
-        }
     }
 }
 
@@ -87,11 +81,11 @@ export function showFilmInfoByNumber(event, renderPlace) {
     const form = new FormData(event.target);
     FetchModule.getFilmInfoByNumber(form.get("film_number"))
         .then(film => createFilmCard(film))
-        .then(card => renderPlace.append(card))
+        .then(card => renderPlace.append(card));
 }
 
 function createPaginationBlock(previous, next, renderPlace) {
-    const paginationBlock = document.createElement('div')
+    const paginationBlock = document.createElement('div');
     paginationBlock.classList.add('d-flex', 'pagination');
 
     const prevBtn = document.createElement("button");
@@ -104,9 +98,9 @@ function createPaginationBlock(previous, next, renderPlace) {
     nextBtn.textContent='>>>';
     nextBtn.classList.add('navigation-btn');
     nextBtn.name = 'next-btn';
-    if(next) nextBtn.setAttribute('data-page', next)
+    if(next) nextBtn.setAttribute('data-page', next);
     paginationBlock.append(prevBtn, nextBtn);
-    paginationBlock.addEventListener('click',(event)=> showCards(event, renderPlace) )
+    paginationBlock.addEventListener('click',(event)=> showCards(event, renderPlace) );
     renderPlace.append(paginationBlock);
 
 }

@@ -1,7 +1,7 @@
 'use strict';
 const CHARACTERS_IMAGES_URL = `https://akabab.github.io/starwars-api/api/all.json`;
 const BASE_URL = 'https://swapi.dev/api/';
-export const IMAGES={}
+export const IMAGES={};
 
 export async function getImagesForAllCharacters() {
     const request = await fetch(CHARACTERS_IMAGES_URL);
@@ -12,7 +12,7 @@ export async function getImagesForAllCharacters() {
 export async function getCharacterById(id) {
     const request = await fetch(`${BASE_URL}people/${id}/`);
     const response = await request.json();
-    return response
+    return response;
 }
 export async function getFilmInfoByNumber(filmNumber) {
     const request = await fetch(`${BASE_URL}films/${filmNumber}/`);
