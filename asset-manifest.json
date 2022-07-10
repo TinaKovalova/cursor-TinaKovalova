@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/cursor-TinaKovalova/static/css/main.a01a961d.css",
+    "main.js": "/cursor-TinaKovalova/static/js/main.1c539c08.js",
+    "index.html": "/cursor-TinaKovalova/index.html",
+    "main.a01a961d.css.map": "/cursor-TinaKovalova/static/css/main.a01a961d.css.map",
+    "main.1c539c08.js.map": "/cursor-TinaKovalova/static/js/main.1c539c08.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a01a961d.css",
+    "static/js/main.1c539c08.js"
+  ]
+}
