@@ -1,7 +1,7 @@
 {
   "name": "hw15",
   "version": "0.1.0",
-  "homepage": "https://tinakovalova.github.io/cursor-TinaKovalova/14-HW15/hw15",
+  "homepage": "https://tinakovalova.github.io/cursor-TinaKovalova/14-HW15",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.1.1",
@@ -13,7 +13,6 @@
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
     "babel-plugin-macros": "^3.1.0",
-    "gh-pages": "^4.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.4.0",
@@ -45,5 +44,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^4.0.0"
   }
 }
